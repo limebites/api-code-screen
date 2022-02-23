@@ -12,6 +12,11 @@ var httpClient = new HttpClient();
 // TODO: use httpClient to POST a list of unique unique car colors offered by Chevy, sorted in alphabetical order, to the carColorsPostUrl
 // the POST body should be a JSON object { "colors": [...] }
 
+class Root
+{
+    public List<Manufacturer> Manufacturers { get; set; } = null!;
+}
+
 class Manufacturer
 {
     public string Name { get; set; } = null!;
