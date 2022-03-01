@@ -1,13 +1,83 @@
 # api-code-screen
 
-This project is intended to test your ability to query an API, modify data, and post the data back to several endpoints we specify.
+This assessment is intended to demonstrate a developer's ability to interact with a RESTful API.
 
-You may fork this project or copy the code. During the interview you will be expected to walkthrough the code and demonstrate the project.
+A successful solution will be able to demonstrate the following capabilities: 
+* GET data from a REST endpoint
+* manipulate JSON data
+* POST a specified payload to a REST endpoint
 
-You will pull down a block of JSON from this endpoint: https://k7o2mgxtv8.execute-api.us-east-1.amazonaws.com/public/manufacturers
+There are three publicly accessible REST endpoints outlined below. The "/manufacturers" endpoint will return JSON data. The developer will need to extract information from this JSON response and POST the appropriate payloads to the "/names" and "/colors" endpoints. 
 
-You will modify the JSON as specified in the project comments and post it back to two other endpoints also provided in the project.
+An example .NET Core 3.1 solution is included in this repository and can be used as a starting point. **This assessment is language and framework agnostic and it is not required to use the provided example solution**.
 
-In order to complete this project you will need the [.NET SDK 6](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
 
-You may use any IDE that will work with .NET, but we recommend either [Visual Studio](https://visualstudio.microsoft.com/downloads/) (Community is more than sufficient for this task btw) or [Visual Studio Code](https://code.visualstudio.com/)
+## API
+
+#### Manufacturers
+**GET** [https://k7o2mgxtv8.execute-api.us-east-1.amazonaws.com/public/manufacturers](https://k7o2mgxtv8.execute-api.us-east-1.amazonaws.com/public/manufacturers)
+
+**Returns**:
+
+StatusCode: 200
+
+Payload: a JSON object of cars offered by different manufactureres
+``` json 
+{
+  "manufacturers": [
+    {
+      "name": "Chevy",
+      "cars": [
+        {
+          "name": "Corvette",
+          "colors": [
+            "black",
+            "midnight blue",
+            "silver",
+            "inferno red",
+            "atomic orange"
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+</br>
+
+#### Names
+**POST** [https://k7o2mgxtv8.execute-api.us-east-1.amazonaws.com/public/names](https://k7o2mgxtv8.execute-api.us-east-1.amazonaws.com/public/names)
+
+The expected payload is a JSON object containing a list of unique car names offered by Ford, sorted in alphabetical order
+
+``` json
+{ 
+	"names": [...] 
+}
+```
+
+**Returns:**
+
+StatusCode: 200 - Correct Answer
+
+StatusCode: 400 - Incorrect Answer
+
+</br>
+
+#### Colors
+**POST** [https://k7o2mgxtv8.execute-api.us-east-1.amazonaws.com/public/colors](https://k7o2mgxtv8.execute-api.us-east-1.amazonaws.com/public/colors) 
+
+The expected payload is a JSON object containing a list of unique car colors offered by Chevy, sorted in alphabetical order
+
+``` json
+{ 
+	"colors": [...] 
+}
+```
+
+**Returns:**
+
+StatusCode: 200 - Correct Answer
+
+StatusCode: 400 - Incorrect Answer
